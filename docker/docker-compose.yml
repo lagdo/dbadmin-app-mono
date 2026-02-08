@@ -1,0 +1,69 @@
+services:
+
+  dbadmin-app:
+    container_name: dbadmin-app
+    image: lagdo/jaxon-dbadmin:latest
+    restart: always
+    volumes:
+      - ./exports:/home/dbadmin/exports
+      - ./config/.env.dbadmin:/var/www/.env.dbadmin
+      - ./config/dbadmin.json:/var/www/config/dbadmin.json
+      - ./config/dbadmin.php:/var/www/config/dbadmin.php
+      - ./config/jaxon.php:/var/www/config/jaxon.php
+      - ./sqlite/dbadmin-app.sqlite:/var/www/database/database.sqlite:rw
+    ports:
+      - 7100:8080
+    extra_hosts:
+      - "pgsql.addr=host-gateway"
+      - "maria.addr=host-gateway"
+      - "mysql.addr=host-gateway"
+      - "infisical.local=host-gateway"
+
+  dbadmin-dev:
+    container_name: dbadmin-dev
+    build:
+      context: ./
+      dockerfile: dbadmin/Dockerfile
+      args:
+        - PHP_USER=dbadmin
+        - PHP_UID=${PHP_UID:-1000}
+        - PHP_GID=${PHP_GID:-1000}
+    volumes:
+      - ../dbadmin:/var/www
+      - ./exports:/home/dbadmin/exports
+      - ./config/.env.dbadmin:/var/www/.env.dbadmin
+      - ./config/dbadmin.json:/var/www/config/dbadmin.json
+      - ./config/dbadmin.php:/var/www/config/dbadmin.php
+      - ./config/jaxon.php:/var/www/config/jaxon.php
+      - ./sqlite/dbadmin-dev.sqlite:/var/www/database/database.sqlite:rw
+    ports:
+      - 7101:8080
+    extra_hosts:
+      - "pgsql.addr=host-gateway"
+      - "maria.addr=host-gateway"
+      - "mysql.addr=host-gateway"
+      - "infisical.local=host-gateway"
+
+  backpack:
+    container_name: backpack
+    build:
+      context: ./
+      dockerfile: backpack/Dockerfile
+      args:
+        - PHP_USER=dbadmin
+        - PHP_UID=${PHP_UID:-1000}
+        - PHP_GID=${PHP_GID:-1000}
+    volumes:
+      - ..:/var/www
+      - ./exports:/home/dbadmin/exports
+      - ./config/.env.dbadmin:/var/www/backpack/.env.dbadmin
+      - ./config/dbadmin.json:/var/www/backpack/config/dbadmin.json
+      - ./config/dbadmin.php:/var/www/backpack/config/dbadmin.php
+      - ./config/jaxon.php:/var/www/backpack/config/jaxon.php
+    ports:
+      - 7102:8080
+    extra_hosts:
+      - "pgsql.addr=host-gateway"
+      - "maria.addr=host-gateway"
+      - "mysql.addr=host-gateway"
+      - "infisical.local=host-gateway"
