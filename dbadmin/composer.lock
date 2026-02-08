@@ -1920,16 +1920,16 @@
         },
         {
             "name": "lagdo/jaxon-dbadmin",
-            "version": "v0.29.0",
+            "version": "v0.29.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/lagdo/jaxon-dbadmin.git",
-                "reference": "2e4ea698c591365158e85a91f0fc43a68e3884de"
+                "reference": "28d8865ad3363f4b34ffa36ffad2bc2bffd57ce1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lagdo/jaxon-dbadmin/zipball/2e4ea698c591365158e85a91f0fc43a68e3884de",
-                "reference": "2e4ea698c591365158e85a91f0fc43a68e3884de",
+                "url": "https://api.github.com/repos/lagdo/jaxon-dbadmin/zipball/28d8865ad3363f4b34ffa36ffad2bc2bffd57ce1",
+                "reference": "28d8865ad3363f4b34ffa36ffad2bc2bffd57ce1",
                 "shasum": ""
             },
             "require": {
@@ -1988,20 +1988,20 @@
                 "issues": "https://github.com/lagdo/jaxon-dbadmin/issues",
                 "source": "https://github.com/lagdo/jaxon-dbadmin"
             },
-            "time": "2026-02-05T10:36:40+00:00"
+            "time": "2026-02-06T22:01:03+00:00"
         },
         {
             "name": "lagdo/jaxon-ui-builder",
-            "version": "v0.6.0",
+            "version": "v0.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/lagdo/jaxon-ui-builder.git",
-                "reference": "5f6a15b80f06cf836e52ebf9e09c66e2ea6fa2ce"
+                "reference": "4c0a73409360d8f06329d77a198848f6f8b477e8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lagdo/jaxon-ui-builder/zipball/5f6a15b80f06cf836e52ebf9e09c66e2ea6fa2ce",
-                "reference": "5f6a15b80f06cf836e52ebf9e09c66e2ea6fa2ce",
+                "url": "https://api.github.com/repos/lagdo/jaxon-ui-builder/zipball/4c0a73409360d8f06329d77a198848f6f8b477e8",
+                "reference": "4c0a73409360d8f06329d77a198848f6f8b477e8",
                 "shasum": ""
             },
             "require": {
@@ -2040,7 +2040,7 @@
                 "issues": "https://github.com/lagdo/jaxon-ui-builder/issues",
                 "source": "https://github.com/lagdo/jaxon-ui-builder"
             },
-            "time": "2026-01-23T12:56:53+00:00"
+            "time": "2026-02-07T18:12:53+00:00"
         },
         {
             "name": "lagdo/laravel-facades",

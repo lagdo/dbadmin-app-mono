@@ -9,11 +9,11 @@ Route::get('/', fn() => view('dbadmin'))
 
 Route::get('/export/{filename}', ExportController::class)
     ->middleware(['auth', 'jaxon.dbadmin.config', 'jaxon.config'])
-    ->name('export');;
+    ->name('dbadmin.export');;
 
 Route::get('/audit', fn() => view('dbaudit'))
     ->middleware(['auth', 'jaxon.dbaudit.config'])
-    ->name('audit');
+    ->name('dbadmin.audit');
 
 Route::post('/audit/jaxon', fn() => response()->json([]))
     ->middleware(['web', 'jaxon.dbaudit.config', 'jaxon.ajax']);
