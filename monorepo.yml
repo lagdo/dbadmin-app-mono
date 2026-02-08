@@ -1,0 +1,22 @@
+# URL or absolute path to the remote GIT repository of the monorepo
+monorepo_url: git@github.com:lagdo/dbadmin-app-mono.git
+
+# All branches that match this regular expression will be split by default
+branch_filter: /^(main|develop|\d+\.\d+)$/
+
+# List of all split projects
+repositories:
+    dbadmin:
+        # URL or absolute path to the remote GIT repository
+        url: git@github.com:lagdo/dbadmin-app.git
+    # backpack:
+    #     # URL or absolute path to the remote GIT repository
+    #     url: git@github.com:lagdo/backpack.git
+    backpack-addon:
+        # URL or absolute path to the remote GIT repository
+        url: git@github.com:lagdo/dbadmin-backpack-addon.git
+
+# Optional additional composer settings for the root composer.json
+composer:
+    require-dev:
+        contao/monorepo-tools: ^0.2
