@@ -30,9 +30,9 @@ services:
         - PHP_GID=${PHP_GID:-1000}
     volumes:
       - ..:/var/www
-      - ../vendor:/var/www/backpack/vendor
+      - ../vendor:/var/www/dbadmin/vendor
       - ./exports:/home/dbadmin/exports
-      - ./config/.env.dbadmin:/var/www/.env.dbadmin
+      - ./config/.env.dbadmin:/var/www/dbadmin/.env.dbadmin
       - ./config/dbadmin.json:/var/www/dbadmin/config/dbadmin.json
       - ./config/dbadmin.php:/var/www/dbadmin/config/dbadmin.php
       - ./config/jaxon.php:/var/www/dbadmin/config/jaxon.php
