@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Closure;
 
 use function config;
+use function route;
 
 class DbAdminPackageConfig
 {
@@ -31,8 +32,8 @@ class DbAdminPackageConfig
                     'audit' => $auditOptions,
                 ],
             ],
-            'jaxon.lib.core.request.uri' => '/jaxon',
-            'jaxon.app.assets.file' => 'admin-0.8.0',
+            'jaxon.lib.core.request.uri' => route('dbadmin.jaxon'),
+            'jaxon.app.assets.file' => 'admin-0.8.1',
         ]);
 
         return $next($request);

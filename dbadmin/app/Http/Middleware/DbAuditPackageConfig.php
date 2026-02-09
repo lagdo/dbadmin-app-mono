@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Closure;
 
 use function config;
+use function route;
 
 class DbAuditPackageConfig
 {
@@ -31,8 +32,8 @@ class DbAuditPackageConfig
                     ...$auditOptions,
                 ],
             ],
-            'jaxon.lib.core.request.uri' => '/audit/jaxon',
-            'jaxon.app.assets.file' => 'audit-0.8.0',
+            'jaxon.lib.core.request.uri' => route('dbaudit.jaxon'),
+            'jaxon.app.assets.file' => 'audit-0.8.1',
         ]);
 
         return $next($request);
