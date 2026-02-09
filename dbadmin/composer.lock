@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a9d5ab0d42c8acae1177ca313d953982",
+    "content-hash": "3b8c3cedaeee3dffe26d7cfa8b7e67b3",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -189,6 +189,84 @@
                 }
             ],
             "time": "2024-02-09T16:56:22+00:00"
+        },
+        {
+            "name": "cuyz/valinor",
+            "version": "1.17.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/CuyZ/Valinor.git",
+                "reference": "9eb2802797e36f3af1fd6e13ff23e4e3d0058022"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/CuyZ/Valinor/zipball/9eb2802797e36f3af1fd6e13ff23e4e3d0058022",
+                "reference": "9eb2802797e36f3af1fd6e13ff23e4e3d0058022",
+                "shasum": ""
+            },
+            "require": {
+                "composer-runtime-api": "^2.0",
+                "php": "~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0",
+                "psr/simple-cache": "^1.0 || ^2.0 || ^3.0"
+            },
+            "conflict": {
+                "phpstan/phpstan": "<1.0 || >= 3.0",
+                "vimeo/psalm": "<5.0 || >=7.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.4",
+                "infection/infection": "^0.29",
+                "marcocesarato/php-conventional-changelog": "^1.12",
+                "mikey179/vfsstream": "^1.6.10",
+                "phpbench/phpbench": "^1.3",
+                "phpstan/phpstan": "^2.0",
+                "phpstan/phpstan-phpunit": "^2.0",
+                "phpstan/phpstan-strict-rules": "^2.0",
+                "phpunit/phpunit": "^10.5",
+                "rector/rector": "^2.0",
+                "vimeo/psalm": "^6.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "CuyZ\\Valinor\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Romain Canon",
+                    "email": "romain.hydrocanon@gmail.com",
+                    "homepage": "https://github.com/romm"
+                }
+            ],
+            "description": "Library that helps to map any input into a strongly-typed value object structure.",
+            "homepage": "https://github.com/CuyZ/Valinor",
+            "keywords": [
+                "array",
+                "conversion",
+                "hydrator",
+                "json",
+                "mapper",
+                "mapping",
+                "object",
+                "tree",
+                "yaml"
+            ],
+            "support": {
+                "issues": "https://github.com/CuyZ/Valinor/issues",
+                "source": "https://github.com/CuyZ/Valinor/tree/1.17.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/romm",
+                    "type": "github"
+                }
+            ],
+            "time": "2025-06-20T06:40:38+00:00"
         },
         {
             "name": "dasprid/enum",
@@ -1158,6 +1236,53 @@
             "time": "2025-08-22T14:27:06+00:00"
         },
         {
+            "name": "infisical/php-sdk",
+            "version": "v0.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Infisical/php-sdk.git",
+                "reference": "1a2d00ab0bddc50f6a1b0455a1e5616c7d9851bd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Infisical/php-sdk/zipball/1a2d00ab0bddc50f6a1b0455a1e5616c7d9851bd",
+                "reference": "1a2d00ab0bddc50f6a1b0455a1e5616c7d9851bd",
+                "shasum": ""
+            },
+            "require": {
+                "cuyz/valinor": "^1.0",
+                "guzzlehttp/guzzle": "^7.0",
+                "php": ">=8.1"
+            },
+            "require-dev": {
+                "phpstan/phpstan": "^1.0",
+                "phpunit/phpunit": "^9.0",
+                "squizlabs/php_codesniffer": "^3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Infisical\\SDK\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Daniel Hougaard",
+                    "email": "daniel@infisical.com"
+                }
+            ],
+            "description": "Official PHP SDK for Infisical",
+            "support": {
+                "issues": "https://github.com/Infisical/php-sdk/issues",
+                "source": "https://github.com/Infisical/php-sdk/tree/v0.0.1"
+            },
+            "time": "2025-09-02T23:24:35+00:00"
+        },
+        {
             "name": "jaxon-php/jaxon-attributes",
             "version": "v1.1.0",
             "source": {
@@ -1266,16 +1391,16 @@
         },
         {
             "name": "jaxon-php/jaxon-core",
-            "version": "v5.6.2",
+            "version": "v5.6.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jaxon-php/jaxon-core.git",
-                "reference": "1060a129b103e40b1f054ebeb110ad80cf0d9a84"
+                "reference": "b99e633ac0e9ae832b810811ca1788eb98b7db18"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jaxon-php/jaxon-core/zipball/1060a129b103e40b1f054ebeb110ad80cf0d9a84",
-                "reference": "1060a129b103e40b1f054ebeb110ad80cf0d9a84",
+                "url": "https://api.github.com/repos/jaxon-php/jaxon-core/zipball/b99e633ac0e9ae832b810811ca1788eb98b7db18",
+                "reference": "b99e633ac0e9ae832b810811ca1788eb98b7db18",
                 "shasum": ""
             },
             "require": {
@@ -1346,7 +1471,7 @@
                 "issues": "https://github.com/jaxon-php/jaxon-core/issues",
                 "source": "https://github.com/jaxon-php/jaxon-core"
             },
-            "time": "2026-02-03T00:20:18+00:00"
+            "time": "2026-02-09T17:52:37+00:00"
         },
         {
             "name": "jaxon-php/jaxon-dialogs",
@@ -1920,21 +2045,22 @@
         },
         {
             "name": "lagdo/jaxon-dbadmin",
-            "version": "v0.29.6",
+            "version": "v0.30.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/lagdo/jaxon-dbadmin.git",
-                "reference": "28d8865ad3363f4b34ffa36ffad2bc2bffd57ce1"
+                "reference": "49970ec46e0c7dc5fe213b7cc62e84c33d2ffc70"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lagdo/jaxon-dbadmin/zipball/28d8865ad3363f4b34ffa36ffad2bc2bffd57ce1",
-                "reference": "28d8865ad3363f4b34ffa36ffad2bc2bffd57ce1",
+                "url": "https://api.github.com/repos/lagdo/jaxon-dbadmin/zipball/49970ec46e0c7dc5fe213b7cc62e84c33d2ffc70",
+                "reference": "49970ec46e0c7dc5fe213b7cc62e84c33d2ffc70",
                 "shasum": ""
             },
             "require": {
                 "ext-iconv": "*",
                 "ext-json": "*",
+                "infisical/php-sdk": "^0.0.1",
                 "jaxon-php/jaxon-attributes": "^1.1",
                 "jaxon-php/jaxon-core": "^5.6",
                 "jaxon-php/jaxon-dialogs": "^5.1",
@@ -1988,7 +2114,7 @@
                 "issues": "https://github.com/lagdo/jaxon-dbadmin/issues",
                 "source": "https://github.com/lagdo/jaxon-dbadmin"
             },
-            "time": "2026-02-06T22:01:03+00:00"
+            "time": "2026-02-09T18:00:33+00:00"
         },
         {
             "name": "lagdo/jaxon-ui-builder",
