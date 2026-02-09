@@ -15,7 +15,7 @@
         <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
           <li><a class="dropdown-item" href="/">Admin</a></li>
-          <li><a class="dropdown-item" href="{{ route('audit') }}">Audit logs</a></li>
+          <li><a class="dropdown-item" href="{{ route('dbadmin.audit') }}">Audit logs</a></li>
           <li><hr class="dropdown-divider" /></li>
           <li><a class="dropdown-item" href="{{ route('logout.get') }}">Logout</a></li>
         </ul>

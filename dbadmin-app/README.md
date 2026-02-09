@@ -429,7 +429,7 @@ return [
                             return '';
                         }
                         // Return the link to the exported file.
-                        return route('export', ['filename' => $filename]);;
+                        return route('dbadmin.export', ['filename' => $filename]);;
                     },
                     'reader' => function(string $filename): string {
                         // The 'export' route calls this function.
