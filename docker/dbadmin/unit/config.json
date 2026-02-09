@@ -11,7 +11,7 @@
                 "uri": "!/index.php"
             },
             "action": {
-                "share": "/var/www/public$uri",
+                "share": "/var/www/dbadmin/public$uri",
                 "fallback": {
                     "pass": "applications/dbadmin"
                 }
@@ -22,7 +22,7 @@
     "applications": {
         "dbadmin": {
             "type": "php",
-            "root": "/var/www/public/",
+            "root": "/var/www/dbadmin/public/",
             "script": "index.php"
         }
     }

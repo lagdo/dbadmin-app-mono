@@ -10,7 +10,7 @@ services:
       - ./config/dbadmin.json:/var/www/config/dbadmin.json
       - ./config/dbadmin.php:/var/www/config/dbadmin.php
       - ./config/jaxon.php:/var/www/config/jaxon.php
-      - ./sqlite/dbadmin-app.sqlite:/var/www/database/database.sqlite:rw
+      - ./laravel/dbadmin-app.sqlite:/var/www/database/database.sqlite:rw
     ports:
       - 7100:8080
     extra_hosts:
@@ -19,23 +19,25 @@ services:
       - "mysql.addr=host-gateway"
       - "infisical.local=host-gateway"
 
-  dbadmin-dev:
+  dbadmin-dev: 
     container_name: dbadmin-dev
     build:
-      context: ./
-      dockerfile: dbadmin/Dockerfile
+      context: ../
+      dockerfile: docker/dbadmin/Dockerfile
       args:
         - PHP_USER=dbadmin
         - PHP_UID=${PHP_UID:-1000}
         - PHP_GID=${PHP_GID:-1000}
     volumes:
-      - ../dbadmin:/var/www
+      - ..:/var/www
+      - ../vendor:/var/www/backpack/vendor
       - ./exports:/home/dbadmin/exports
       - ./config/.env.dbadmin:/var/www/.env.dbadmin
-      - ./config/dbadmin.json:/var/www/config/dbadmin.json
-      - ./config/dbadmin.php:/var/www/config/dbadmin.php
-      - ./config/jaxon.php:/var/www/config/jaxon.php
-      - ./sqlite/dbadmin-dev.sqlite:/var/www/database/database.sqlite:rw
+      - ./config/dbadmin.json:/var/www/dbadmin/config/dbadmin.json
+      - ./config/dbadmin.php:/var/www/dbadmin/config/dbadmin.php
+      - ./config/jaxon.php:/var/www/dbadmin/config/jaxon.php
+      - ./laravel/dbadmin-dev.sqlite:/var/www/dbadmin/database/database.sqlite:rw
+      - ./laravel/index.php:/var/www/dbadmin/public/index.php
     ports:
       - 7101:8080
     extra_hosts:
@@ -47,19 +49,22 @@ services:
   backpack:
     container_name: backpack
     build:
-      context: ./
-      dockerfile: backpack/Dockerfile
+      context: ../
+      dockerfile: docker/backpack/Dockerfile
       args:
         - PHP_USER=dbadmin
         - PHP_UID=${PHP_UID:-1000}
         - PHP_GID=${PHP_GID:-1000}
     volumes:
       - ..:/var/www
+      - ../vendor:/var/www/backpack/vendor
       - ./exports:/home/dbadmin/exports
       - ./config/.env.dbadmin:/var/www/backpack/.env.dbadmin
       - ./config/dbadmin.json:/var/www/backpack/config/dbadmin.json
       - ./config/dbadmin.php:/var/www/backpack/config/dbadmin.php
       - ./config/jaxon.php:/var/www/backpack/config/jaxon.php
+      - ./laravel/backpack.sqlite:/var/www/dbadmin/database/database.sqlite:rw
+      - ./laravel/index.php:/var/www/backpack/public/index.php
     ports:
       - 7102:8080
     extra_hosts:

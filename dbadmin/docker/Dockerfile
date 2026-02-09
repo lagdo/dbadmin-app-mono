@@ -14,7 +14,7 @@ ENV PHP_GID=${PHP_GID}
 RUN install-php-extensions pdo pdo_sqlite sqlite3 pdo_mysql mysqlnd mysqli pdo_pgsql pgsql
 
 # Configure Nginx Unit
-COPY docker/config/unit.json /docker-entrypoint.d/config.json
+COPY docker/unit/config.json /docker-entrypoint.d/config.json
 
 # App root
 COPY . /var/www
