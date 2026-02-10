@@ -8,8 +8,6 @@ services:
       - ./exports:/home/dbadmin/exports
       - ./config/.env.dbadmin:/var/www/.env.dbadmin
       - ./config/dbadmin.json:/var/www/config/dbadmin.json
-      - ./config/dbadmin.php:/var/www/config/dbadmin.php
-      - ./config/jaxon.php:/var/www/config/jaxon.php
       - ./sqlite/dbadmin-app.sqlite:/var/www/database/database.sqlite:rw
       - ./dbadmin/AppServiceProvider.php:/var/www/backpack/app/Providers/AppServiceProvider.php
     ports:
@@ -34,8 +32,6 @@ services:
       - ./exports:/home/dbadmin/exports
       - ./config/.env.dbadmin:/var/www/dbadmin/.env.dbadmin
       - ./config/dbadmin.json:/var/www/dbadmin/config/dbadmin.json
-      - ./config/dbadmin.php:/var/www/dbadmin/config/dbadmin.php
-      - ./config/jaxon.php:/var/www/dbadmin/config/jaxon.php
       - ./sqlite/dbadmin-dev.sqlite:/var/www/dbadmin/database/database.sqlite:rw
       - ./dbadmin/index.php:/var/www/dbadmin/public/index.php
       - ./dbadmin/AppServiceProvider.php:/var/www/backpack/app/Providers/AppServiceProvider.php
@@ -61,8 +57,6 @@ services:
       - ./exports:/home/dbadmin/exports
       - ./config/.env.dbadmin:/var/www/backpack/.env.dbadmin
       - ./config/dbadmin.json:/var/www/backpack/config/dbadmin.json
-      - ./config/dbadmin.php:/var/www/backpack/config/dbadmin.php
-      - ./config/jaxon.php:/var/www/backpack/config/jaxon.php
       - ./sqlite/backpack.sqlite:/var/www/dbadmin/database/database.sqlite:rw
       - ./backpack/index.php:/var/www/backpack/public/index.php
       - ./backpack/AppServiceProvider.php:/var/www/backpack/app/Providers/AppServiceProvider.php

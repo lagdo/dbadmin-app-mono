@@ -92,7 +92,7 @@ return [
                             return '';
                         }
                         // Return the link to the exported file.
-                        return "/export/$filename";
+                        return route('dbadmin.export', ['filename' => $filename], false);
                     },
                     'reader' => function(string $filename): string {
                         try {
