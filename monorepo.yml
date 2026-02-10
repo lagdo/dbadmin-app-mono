@@ -9,9 +9,9 @@ repositories:
     dbadmin:
         # URL or absolute path to the remote GIT repository
         url: git@github.com:lagdo/dbadmin-app.git
-    # backpack:
-    #     # URL or absolute path to the remote GIT repository
-    #     url: git@github.com:lagdo/backpack.git
+    backpack:
+        # URL or absolute path to the remote GIT repository
+        url: git@github.com:lagdo/backpack.git
     backpack-addon:
         # URL or absolute path to the remote GIT repository
         url: git@github.com:lagdo/dbadmin-backpack-addon.git

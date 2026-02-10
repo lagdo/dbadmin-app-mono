@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Console\Commands;
+namespace DbAdmin\App\Console\Commands;
 
-use App\Models\User;
+use DbAdmin\App\Models\User;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
-use App\Actions\Fortify\PasswordValidationRules;
+use DbAdmin\App\Actions\Fortify\PasswordValidationRules;
 
 use function Laravel\Prompts\password;
 use function Laravel\Prompts\text;

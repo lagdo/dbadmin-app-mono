@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Providers;
+namespace DbAdmin\App\Providers;
 
-use App\Http\Middleware\DbAdminPackageConfig;
-use App\Http\Middleware\DbAuditPackageConfig;
-use App\Models\User;
+use DbAdmin\App\Http\Middleware\DbAdminPackageConfig;
+use DbAdmin\App\Http\Middleware\DbAuditPackageConfig;
+use DbAdmin\App\Models\User;
 use Dotenv\Dotenv;
 use Illuminate\Foundation\Exceptions\Handler;
 use Illuminate\Routing\Router;

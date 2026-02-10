@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace DbAdmin\App\Http\Controllers;
 
 abstract class Controller
 {

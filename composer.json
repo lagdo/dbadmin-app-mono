@@ -47,6 +47,9 @@
             "App\\": "backpack/app/",
             "Database\\Factories\\": "backpack/database/factories/",
             "Database\\Seeders\\": "backpack/database/seeders/",
+            "DbAdmin\\App\\": "dbadmin/app/",
+            "DbAdmin\\Database\\Factories\\": "dbadmin/database/factories/",
+            "DbAdmin\\Database\\Seeders\\": "dbadmin/database/seeders/",
             "Lagdo\\Dbadmin\\Backpack\\": "backpack-addon/src/"
         }
     },

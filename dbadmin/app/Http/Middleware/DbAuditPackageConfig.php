@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Middleware;
+namespace DbAdmin\App\Http\Middleware;
 
 use Illuminate\Http\Request;
 use Lagdo\DbAdmin\Db\DbAuditPackage;
@@ -33,7 +33,7 @@ class DbAuditPackageConfig
                 ],
             ],
             'jaxon.lib.core.request.uri' => route('dbaudit.jaxon'),
-            'jaxon.app.assets.file' => 'audit-0.8.1',
+            'jaxon.app.assets.file' => 'audit-0.9.0',
         ]);
 
         return $next($request);

@@ -30,9 +30,9 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "app/",
-            "Database\\Factories\\": "database/factories/",
-            "Database\\Seeders\\": "database/seeders/"
+            "DbAdmin\\App\\": "app/",
+            "DbAdmin\\Database\\Factories\\": "database/factories/",
+            "DbAdmin\\Database\\Seeders\\": "database/seeders/"
         }
     },
     "autoload-dev": {
