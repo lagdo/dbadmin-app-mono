@@ -16,7 +16,7 @@ Route::get('/export/{filename}', function(string $filename) {
     $content = !is_callable($reader) ? "No export reader set." : $reader($filename);
     return response($content)->header('Content-Type', 'text/plain');
 })->middleware(['auth', 'jaxon.dbadmin.config'])
-    ->name('dbadmin.export');;
+    ->name('dbadmin.export');
 
 Route::get('/audit', fn() => view('dbaudit'))
     ->middleware(['auth', 'jaxon.dbaudit.config'])

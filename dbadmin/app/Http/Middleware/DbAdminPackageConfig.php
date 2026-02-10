@@ -32,7 +32,7 @@ class DbAdminPackageConfig
                     'audit' => $auditOptions,
                 ],
             ],
-            'jaxon.lib.core.request.uri' => route('dbadmin.jaxon'),
+            'jaxon.lib.core.request.uri' => route(name: 'dbadmin.jaxon', absolute: false),
             'jaxon.app.assets.file' => 'admin-0.9.0',
         ]);
 
