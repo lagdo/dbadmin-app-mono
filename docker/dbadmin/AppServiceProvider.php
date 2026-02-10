@@ -16,9 +16,9 @@ class AppServiceProvider extends ServiceProvider
     {
         // Customize the provided Infisical config reader.
         $this->app->singleton(InfisicalConfigReader::class, function() {
-            $reader = jaxon()->di()->g(InfisicalConfigReader::class);
             $secretKeyBuilder = fn(string $prefix, string $option) =>
                 "users.{$prefix}.{$option}";
+            $reader = jaxon()->di()->g(InfisicalConfigReader::class);
             $reader->setSecretKeyBuilder($secretKeyBuilder);
             return $reader;
         });

@@ -11,6 +11,7 @@ services:
       - ./config/dbadmin.php:/var/www/config/dbadmin.php
       - ./config/jaxon.php:/var/www/config/jaxon.php
       - ./sqlite/dbadmin-app.sqlite:/var/www/database/database.sqlite:rw
+      - ./dbadmin/AppServiceProvider.php:/var/www/backpack/app/Providers/AppServiceProvider.php
     ports:
       - 7100:8080
     extra_hosts:
@@ -30,14 +31,14 @@ services:
         - PHP_GID=${PHP_GID:-1000}
     volumes:
       - ..:/var/www
-      - ../vendor:/var/www/dbadmin/vendor
       - ./exports:/home/dbadmin/exports
       - ./config/.env.dbadmin:/var/www/dbadmin/.env.dbadmin
       - ./config/dbadmin.json:/var/www/dbadmin/config/dbadmin.json
       - ./config/dbadmin.php:/var/www/dbadmin/config/dbadmin.php
       - ./config/jaxon.php:/var/www/dbadmin/config/jaxon.php
       - ./sqlite/dbadmin-dev.sqlite:/var/www/dbadmin/database/database.sqlite:rw
-      - ./laravel/index.php:/var/www/dbadmin/public/index.php
+      - ./dbadmin/index.php:/var/www/dbadmin/public/index.php
+      - ./dbadmin/AppServiceProvider.php:/var/www/backpack/app/Providers/AppServiceProvider.php
     ports:
       - 7101:8080
     extra_hosts:
@@ -57,14 +58,14 @@ services:
         - PHP_GID=${PHP_GID:-1000}
     volumes:
       - ..:/var/www
-      - ../vendor:/var/www/backpack/vendor
       - ./exports:/home/dbadmin/exports
       - ./config/.env.dbadmin:/var/www/backpack/.env.dbadmin
       - ./config/dbadmin.json:/var/www/backpack/config/dbadmin.json
       - ./config/dbadmin.php:/var/www/backpack/config/dbadmin.php
       - ./config/jaxon.php:/var/www/backpack/config/jaxon.php
       - ./sqlite/backpack.sqlite:/var/www/dbadmin/database/database.sqlite:rw
-      - ./laravel/index.php:/var/www/backpack/public/index.php
+      - ./backpack/index.php:/var/www/backpack/public/index.php
+      - ./backpack/AppServiceProvider.php:/var/www/backpack/app/Providers/AppServiceProvider.php
     ports:
       - 7102:8080
     extra_hosts:
