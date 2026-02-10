@@ -2,7 +2,7 @@
 
 **Jaxon DbAdmin is a database admin dashboard with multiple DBMS support, and a custom and extensible authentication system.**
 
-[Features](#features-and-current-status) • [Installation](#installation) • [Docker](#running-with-docker) • [Authentication](#user-management-and-authentication) • [Configuration](#database-access-configuration) • [Query audit](#the-query-audit) • [Data export](#data-export) • [Data import](#data-import-with-file-upload)
+[Features](#features-and-current-status) • [Installation](#installation) • [Docker](#running-with-docker) • [Authentication](#user-management-and-authentication) • [Configuration](#database-access-configuration) • [Query audit](#the-query-audit) • [Config readers](#the-database-config-readers) • [Data export](#data-export) • [Data import](#data-import-with-file-upload)
 
 ![screenshot](screenshots/jaxon-dbadmin-database-window.png)
 
@@ -27,21 +27,22 @@ Here's the monorepo where the packages are developed: [https://github.com/lagdo/
 This application and the related packages are still being actively developed, and the provided features are still basic and need improvements.
 
 The following features are currently available:
-- Browse servers and databases.
+- Browse servers and databases in multiple tabs.
+- Open the query editor in multiple tabs, with query text retention.
+- Save and show the query history.
+- Save queries in user favorites.
+- Read database credentials with an extensible config reader.
+- Read database credentials from an [Infisical](https://infisical.com/) server.
 - Show tables and views details.
 - Query a table.
 - Query a view.
 - Execute queries in the query editor.
 - Use a better editor for SQL queries.
-- Save and show the query history.
-- Save queries in user favorites.
 - Import or export data.
 - Insert, modify or delete data in a table.
 - Create or drop a database.
 - Create or alter a table or view.
 - Drop a table or view.
-- Browse servers and databases in multiple tabs.
-- Open the query editor in multiple tabs, with query text retention.
 
 The following features are not yet implemented, and planned for future releases:
 - Save the current tabs in user preferences.
@@ -372,6 +373,89 @@ Additionally, the user can also save his preferred queries in the audit database
 Both the history and favorites queries are displayed in the query page. From those two tables, the user can copy or insert the query code in the editor.
 
 The queries in the favorites can also be modified or deleted.
+
+### The database config readers
+
+Jaxon DbAdmin uses an extensible `config reader` to read the database credentials.
+By default, the database credentials are stored in a `json`, `yaml` or `php` config file.
+Jaxon DbAdmin provides a [default `config reader`](https://github.com/lagdo/jaxon-dbadmin/blob/main/src/Config/ConfigReader.php) which is able to read these values, either from the config file content, or from environment variables.
+
+An alternative `config reader` can be specified in the package config options.
+Let say for example the `CustomConfigReader` class inherits from the default `config reader` and redefines some functions.
+The `DbAdminPackage` and `DbAuditPackage` can be configured to use it as their `config reader`.
+
+```php
+    'app' => [
+        // ...
+        'packages' => [
+            Lagdo\DbAdmin\Db\DbAdminPackage::class => [
+                // Read the database credentials with the custom config reader.
+                'config' => [
+                    'reader' => CustomConfigReader::class,
+                ],
+                // ...
+            ],
+            Lagdo\DbAdmin\Db\DbAuditPackage::class => [
+                // Read the database credentials with the custom config reader.
+                'config' => [
+                    'reader' => CustomConfigReader::class,
+                ],
+                // ...
+            ],
+        ],
+    ],
+```
+
+Jaxon DbAdmin includes a `config reader` for reading database credentials from an [Infisical server](https://infisical.com).
+The setup of the required `Secrets Management` project in the Infisical server is described here: [https://www.jaxon-php.org/blog/2026/01/secure-the-jaxon-dbadmin-database-credentials-with-infisical.html](https://www.jaxon-php.org/blog/2026/01/secure-the-jaxon-dbadmin-database-credentials-with-infisical.html).
+
+The Infisical `config reader` needs to be provided with a closure which returns the key where to find each secret in the server.
+This can be done for example in a service provider.
+
+```php
+use Lagdo\DbAdmin\Db\Config\AuthInterface;
+use Lagdo\DbAdmin\Db\Config\InfisicalConfigReader;
+use function Jaxon\jaxon;
+
+    public function register(): void
+    {
+        $this->app->singleton(InfisicalConfigReader::class, function() {
+            $secretKetBuilder = function(string $prefix, string $option, AuthInterface $auth) {
+                // Select a secret key based on the authenticated user, and the option prefix and name.
+                return $secretKey;
+            };
+            $reader = jaxon()->di()->g(InfisicalConfigReader::class);
+            $reader->setSecretKeyBuilder($secretKeyBuilder);
+            return $reader;
+        });
+    }
+```
+
+The packages can then be configured to use the Infisical `config reader`, in the `config/jaxon.php` config file.
+
+```php
+use Lagdo\DbAdmin\Db\Config\InfisicalConfigReader;
+
+    'app' => [
+        // ...
+        'packages' => [
+            Lagdo\DbAdmin\Db\DbAdminPackage::class => [
+                // Read the database credentials with the custom config reader.
+                'config' => [
+                    'reader' => InfisicalConfigReader::class,
+                ],
+                // ...
+            ],
+            Lagdo\DbAdmin\Db\DbAuditPackage::class => [
+                // Read the database credentials with the custom config reader.
+                'config' => [
+                    'reader' => InfisicalConfigReader::class,
+                ],
+                // ...
+            ],
+        ],
+    ],
+```
 
 ### Data export
 
