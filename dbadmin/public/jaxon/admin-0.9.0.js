@@ -1,4 +1,4 @@
-jaxon.config.requestURI = '/jaxon';
+jaxon.config.requestURI = 'http://localhost:7101/jaxon';
 jaxon.config.statusMessages = false;
 jaxon.config.waitCursor = true;
 jaxon.config.version = 'Jaxon 5.x';
@@ -1027,8 +1027,6 @@ jaxon.dom.ready(() => {
         },
     };
 })(jaxon.dbadmin);
-
-jaxon.dom.ready(() => jaxon.dbadmin.setToastLib('notyf'));
 
 /**
  * Bootbox dialogs plugin
