@@ -1,4 +1,4 @@
-ARG DBADMIN_VERSION=0.9.0
+ARG DBADMIN_VERSION=0.9.1
 
 # Root builder
 FROM lagdo/alpine-php-nginx-unit
@@ -34,6 +34,7 @@ USER ${PHP_USER}
 RUN cd /var/www && \
   composer install --no-dev && \
   cp .env.docker .env && \
+  (rm -f database/database.sqlite || true) && \
   composer run post-create-project-cmd
 
 WORKDIR /var/www
