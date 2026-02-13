@@ -33,7 +33,6 @@ services:
       - ./config/.env.dbadmin:/var/www/dbadmin/.env.dbadmin
       - ./config/dbadmin.json:/var/www/dbadmin/config/dbadmin.json
       - ./sqlite/dbadmin-dev.sqlite:/var/www/dbadmin/database/database.sqlite:rw
-      - ./dbadmin/index.php:/var/www/dbadmin/public/index.php
       - ./dbadmin/AppServiceProvider.php:/var/www/backpack/app/Providers/AppServiceProvider.php
     ports:
       - 7101:8080
@@ -58,7 +57,6 @@ services:
       - ./config/.env.dbadmin:/var/www/backpack/.env.dbadmin
       - ./config/dbadmin.json:/var/www/backpack/config/dbadmin.json
       - ./sqlite/backpack.sqlite:/var/www/dbadmin/database/database.sqlite:rw
-      - ./backpack/index.php:/var/www/backpack/public/index.php
       - ./backpack/AppServiceProvider.php:/var/www/backpack/app/Providers/AppServiceProvider.php
     ports:
       - 7102:8080

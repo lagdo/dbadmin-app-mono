@@ -3,7 +3,7 @@
 return [
     'common' => [
         'access' => [
-            'server' => true,
+            'server' => false,
             'system' => false,
         ],
     ],
