@@ -3,6 +3,7 @@
 namespace DbAdmin\App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Lagdo\DbAdmin\Db\Config\AuthInterface;
 use Lagdo\DbAdmin\Db\Config\InfisicalConfigReader;
 
 use function Jaxon\jaxon;
@@ -10,17 +11,26 @@ use function Jaxon\jaxon;
 class AppServiceProvider extends ServiceProvider
 {
     /**
+     * @param string $prefix
+     * @param string $option
+     * @param AuthInterface $auth
+     *
+     * @return string
+     */
+    private function getSecretKey(string $prefix, string $option, AuthInterface $auth): string
+    {
+        return "users.{$prefix}.{$option}";
+    }
+
+    /**
      * Register any application services.
      */
     public function register(): void
     {
         // Customize the provided Infisical config reader.
         $this->app->singleton(InfisicalConfigReader::class, function() {
-            $secretKeyBuilder = fn(string $prefix, string $option) =>
-                "users.{$prefix}.{$option}";
             $reader = jaxon()->di()->g(InfisicalConfigReader::class);
-            $reader->setSecretKeyBuilder($secretKeyBuilder);
-            return $reader;
+            return $reader->setSecretKeyBuilder($this->getSecretKey(...));
         });
     }
 

@@ -13,7 +13,7 @@ use Illuminate\Support\ServiceProvider;
 use Jaxon\Exception\Exception as JaxonException;
 use Lagdo\DbAdmin\Ajax\Exception\AppException;
 use Lagdo\DbAdmin\Db\Config\AuthInterface;
-use Lagdo\DbAdmin\Db\Config\UserFileReader;
+use Lagdo\DbAdmin\Db\Config\ConfigProvider;
 use Lagdo\DbAdmin\Db\Driver\Exception\DbException;
 use Symfony\Component\HttpFoundation\Response;
 use Exception;
@@ -93,7 +93,7 @@ class DbAdminServiceProvider extends ServiceProvider
 
         // Set the path to the user access config file.
         jaxon()->callback()->boot(fn() => jaxon()->di()
-            ->g(UserFileReader::class)
+            ->g(ConfigProvider::class)
             ->config($this->getDbAdminConfigFile()));
 
         // Auth gate for the DbAdmin audit page
