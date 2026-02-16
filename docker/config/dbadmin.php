@@ -11,22 +11,34 @@ return [
     ],
     'users' => [
     ],
-    'audit' => [
-        'options' => [
-            'library' => [
-                'enabled' => false,
-            ],
-            'enduser' => [
+    'queries' => [
+        'record' => [
+            'builder' => [
                 'enabled' => true,
             ],
+            'editor' => [
+                'enabled' => true,
+            ],
+        ],
+        'admin' => [
             'history' => [
-                'enabled' => true,
+                'show' => true,
                 'distinct' => true,
-                'limit' => 10,
+                'limit' => 15,
             ],
             'favorite' => [
-                'enabled' => true,
+                'show' => true,
                 'limit' => 10,
+            ],
+            'preferences' => [
+                'enabled' => true,
+            ],
+        ],
+        'audit' => [
+            'enabled' => true,
+            'users' => [
+                // The emails of users that are allowed to access the audit page.
+                'admin@company.com',
             ],
         ],
         'database' => [
@@ -37,10 +49,6 @@ return [
             'username' => "env(LOGGING_DB_USERNAME)",
             'password' => "env(LOGGING_DB_PASSWORD)",
             'name' => 'auditdb',
-        ],
-        'allowed' => [
-            // The emails of users that are allowed to access the audit page.
-            'admin@company.com'
         ],
     ],
 ];
