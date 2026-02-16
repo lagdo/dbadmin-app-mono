@@ -72,6 +72,8 @@ Lagdo = {
       Admin: {
         Admin: {
           server: (...args) => jx.rc(jx.c0, 'server', args, { bags: ["dbadmin","dbadmin.tab"] }),
+          start: (...args) => jx.rc(jx.c0, 'start', args, { bags: ["dbadmin","dbadmin.tab"] }),
+          tabs: (...args) => jx.rc(jx.c0, 'tabs', args, { bags: ["dbadmin","dbadmin.tab"] }),
         },
         Db: {
           Command: {
@@ -116,7 +118,7 @@ Lagdo = {
             Import: {
               database: (...args) => jx.rc(jx.c7, 'database', args, { bags: ["dbadmin"] }),
               executeWebFile: (...args) => jx.rc(jx.c7, 'executeWebFile', args, { bags: ["dbadmin"] }),
-              executeSqlFiles: (...args) => jx.rc(jx.c7, 'executeSqlFiles', args, { bags: ["dbadmin"], upload: 'dbadmin-import-sql-files-input' }),
+              executeSqlFiles: (...args) => jx.rc(jx.c7, 'executeSqlFiles', args, { bags: ["dbadmin"], callback: [jaxon.dbadmin.upload], upload: 'dbadmin-import-sql-files-input' }),
             },
             Query: {
               database: (...args) => jx.rc(jx.c8, 'database', args, { bags: ["dbadmin","dbadmin.tab"] }),
@@ -154,7 +156,7 @@ Lagdo = {
             Import: {
               server: (...args) => jx.rc(jx.c17, 'server', args, { bags: ["dbadmin"] }),
               executeWebFile: (...args) => jx.rc(jx.c17, 'executeWebFile', args, { bags: ["dbadmin"] }),
-              executeSqlFiles: (...args) => jx.rc(jx.c17, 'executeSqlFiles', args, { bags: ["dbadmin"], upload: 'dbadmin-import-sql-files-input' }),
+              executeSqlFiles: (...args) => jx.rc(jx.c17, 'executeSqlFiles', args, { bags: ["dbadmin"], callback: [jaxon.dbadmin.upload], upload: 'dbadmin-import-sql-files-input' }),
             },
             Privilege: {
               add: (...args) => jx.rc(jx.c18, 'add', args, { bags: ["dbadmin"] }),
@@ -320,6 +322,7 @@ Lagdo = {
           del: (...args) => jx.rc(jx.c49, 'del', args, { bags: ["dbadmin","dbadmin.tab"] }),
           editTitle: (...args) => jx.rc(jx.c49, 'editTitle', args, { bags: ["dbadmin","dbadmin.tab"] }),
           saveTitle: (...args) => jx.rc(jx.c49, 'saveTitle', args, { bags: ["dbadmin","dbadmin.tab"] }),
+          saveAppTabs: (...args) => jx.rc(jx.c49, 'saveAppTabs', args, { bags: ["dbadmin","dbadmin.tab"] }),
         },
       },
     },
@@ -1024,6 +1027,22 @@ jaxon.dom.ready(() => {
         insertQuerytext: (node, prefix) => {
             editor.query.insert(getFavoriteQuery(node, prefix));
             showInfoMessage(toast.messages.inserted);
+        },
+    };
+
+    /**
+     * Jaxon javascript callback for upload requests.
+     */
+    self.upload = {
+        /**
+         * @param {object} oRequest
+         *
+         * @returns {void}
+         */
+        onInitialize: (oRequest) => {
+            // The upload field id must be associated to the current app tab id.
+            const appTabId = jaxon.bag.getEntry('dbadmin', 'tab.app') ?? '';
+            oRequest.upload = `${appTabId}_${oRequest.upload}`;
         },
     };
 })(jaxon.dbadmin);
