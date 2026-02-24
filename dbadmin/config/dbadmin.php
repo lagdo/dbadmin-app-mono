@@ -3,7 +3,7 @@
 return [
     'common' => [
         'access' => [
-            'server' => false,
+            'server' => true,
             'system' => false,
         ],
     ],
@@ -14,41 +14,34 @@ return [
     'queries' => [
         'record' => [
             'builder' => [
-                'enabled' => true,
+                'enabled' => false,
             ],
             'editor' => [
-                'enabled' => true,
+                'enabled' => false,
             ],
         ],
         'admin' => [
             'history' => [
-                'show' => true,
+                'show' => false,
                 'distinct' => true,
                 'limit' => 15,
             ],
             'favorite' => [
-                'show' => true,
+                'show' => false,
                 'limit' => 10,
             ],
             'preferences' => [
-                'enabled' => true,
+                'enabled' => false,
             ],
         ],
         'audit' => [
             'enabled' => true,
             'users' => [
                 // The emails of users that are allowed to access the audit page.
-                'admin@company.com',
             ],
         ],
         'database' => [
             // Same as the "servers" items, but "name" is the database name.
-            'driver' => 'pgsql',
-            'host' => "env(LOGGING_DB_HOST)",
-            'port' => "env(LOGGING_DB_PORT)",
-            'username' => "env(LOGGING_DB_USERNAME)",
-            'password' => "env(LOGGING_DB_PASSWORD)",
-            'name' => 'auditdb',
         ],
     ],
 ];

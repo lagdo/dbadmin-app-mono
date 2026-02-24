@@ -1,4 +1,4 @@
-ARG DBADMIN_VERSION=0.10.1
+ARG DBADMIN_VERSION=0.10.2
 
 # Root builder
 FROM lagdo/alpine-php-nginx-unit
