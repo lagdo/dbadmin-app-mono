@@ -18,8 +18,8 @@ services:
       - "mysql.addr=host-gateway"
       - "infisical.local=host-gateway"
 
-  dbadmin-dev: 
-    container_name: dbadmin-dev
+  dbadmin-pkg: 
+    container_name: dbadmin-pkg
     build:
       context: ../
       dockerfile: docker/dbadmin/Dockerfile
